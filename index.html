@@ -1,93 +1,177 @@
-<!DOCTYPE html>
-
-<html>
+<!DOCTYPE html><html lang="hi">
 <head>
-  <meta http-equiv="CONTENT-TYPE" content="text/html; charset=UTF-8">
-  <title>Hello, World!</title>
-</head>
-<body>
-  <h1>
-   🔥  पैसों का खेल नहीं है ये ज़िंदगी साहब,
-यहाँ इज़्ज़त, सब्र और संघर्ष ही असली दौलत होती है। 🔥
-    
-
-✨ Written By – Lalbabu Kumar
-  </h1>
-</body>
-</html><!DOCTYPE html>
-<html>
-<head>
-  <meta http-equiv="CONTENT-TYPE" content="text/html; charset=UTF-8">
-  <title>Hello, World!</title>
-</head>
-<body>
-  <h1>
- 
-  </h1>
-</body>
-</html>
-<!DOCTYPE html><html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Lalbabu Kumar - Loan Expert</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Live Test Saarthi</title>
+  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth-compat.js"></script>
   <style>
     body {
-      font-family: Arial, sans-serif;
+      font-family: sans-serif;
+      background-color: #121212;
+      color: #f0f0f0;
       margin: 0;
-      padding: 20px;
-      background: #f0f2f5;
-      display: flex;
-      justify-content: center;
+      padding: 1rem;
     }
-    .container {
-      background: white;
-      border-radius: 15px;
-      padding: 20px;
-      max-width: 400px;
-      width: 100%;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    .header {
+      color: red;
+      font-size: 1.5rem;
       text-align: center;
+      margin-bottom: 1rem;
     }
-    h1 {
-      margin: 0;
-      font-size: 24px;
-    }
-    p {
-      margin: 10px 0 20px;
-      font-size: 16px;
-      color: #555;
-    }
-    .btn {
-      display: block;
-      width: 100%;
-      margin: 10px 0;
-      padding: 15px;
-      border: none;
+    .box {
+      background: #1e1e1e;
+      padding: 1rem;
       border-radius: 10px;
-      font-size: 18px;
-      font-weight: bold;
+      margin-bottom: 1rem;
+    }
+    button {
+      background: purple;
       color: white;
-      text-decoration: none;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-top: 10px;
     }
-    .call {
-      background-color: #007bff;
+    .admin {
+      margin-top: 10px;
+      display: none;
     }
-    .apply {
-      background-color: #007bff;
+    .comment {
+      background: #2a2a2a;
+      padding: 0.5rem;
+      border-radius: 5px;
+      margin-top: 5px;
     }
-    .whatsapp {
-      background-color: #25D366;
+    .hidden {
+      display: none;
+    }
+    .test-title {
+      cursor: pointer;
+      color: cyan;
+      text-decoration: underline;
+    }
+    footer {
+      text-align: center;
+      margin-top: 2rem;
+      color: gray;
+      font-size: 0.9rem;
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <h1>🚀 Lalbabu Kumar</h1>
-    <p>Fast Loan & Credit Card Expert</p><a href="tel:8292024760" class="btn call">📞 Call Now</a>
-<a href="https://docs.google.com/forms/d/e/1FAIpQLScOcOLrVyg5CsovAWQwkYQlzP9L8-0_OmItRIFXce0YJa76gg/viewform" class="btn apply" target="_blank">📝 Apply Now</a>
-<a href="https://wa.me/918292024760" class="btn whatsapp" target="_blank">💬 WhatsApp</a>
+  <div class="header">📘 Live Test Saarthi</div>  <div id="loginBox">
+    <button onclick="loginWithGoogle()">Admin Login with Google</button>
+  </div>  <div class="box" id="popupNotice">🔔 Popup Notice: <em>Live Test - Chapter 1 Biology starting now!</em>
+    <div class="admin">
+      <button onclick="alert('Upload Popup Notice')">Upload</button>
+      <button onclick="alert('Edit Notice')">Edit</button>
+      <button onclick="alert('Delete Notice')">Delete</button>
+    </div>
+  </div>  <div class="box" id="motivationCorner">
+    <strong>🌟 Motivation Corner</strong>
+    <p>"कोशिश करने वालों की कभी हार नहीं होती"</p>
+    <input type="text" placeholder="अपना comment लिखें" id="studentComment"/>
+    <button onclick="submitComment()">Comment</button>
+    <div id="commentsList"></div>
+    <div class="admin">
+      <button onclick="alert('Edit Motivation')">Edit</button>
+      <button onclick="alert('Delete Motivation')">Delete</button>
+    </div>
+  </div>  <div class="box" id="newsSection">
+    <strong>📰 Notice / News</strong>
+    <p>SSC GD 2025 भर्ती नोटिस: अंतिम तिथि 31 अगस्त 2025</p>
+    <p>NEET 2025 टॉपर्स: आर्यन कुमार (715/720)</p>
+    <div class="admin">
+      <button onclick="alert('Upload News')">Upload</button>
+      <button onclick="alert('Edit News')">Edit</button>
+      <button onclick="alert('Delete News')">Delete</button>
+    </div>
+  </div>  <div class="box">
+    <strong>🧪 Live Test</strong><br/>
+    <div class="test-title" onclick="toggleForm('live')">Biology Chapter 1</div>
+    <div id="liveForm" class="hidden">
+      <input type="text" placeholder="Name" id="name" />
+      <input type="text" placeholder="District" id="district" />
+      <button onclick="startTest()">Start Test</button>
+    </div>
+    <div class="admin">
+      <button onclick="alert('Upload Live Test')">Upload</button>
+      <button onclick="alert('Edit Live Test')">Edit</button>
+      <button onclick="alert('Delete Live Test')">Delete</button>
+    </div>
+  </div>  <div class="box">
+    <strong>📂 पुराने टेस्ट</strong><br/>
+    <div class="test-title" onclick="toggleForm('old')">Biology Chapter 1 (15 जून 2025)</div>
+    <div id="oldForm" class="hidden">
+      <input type="text" placeholder="Name" id="oldName" />
+      <input type="text" placeholder="District" id="oldDistrict" />
+      <button onclick="startTest(true)">Start Test</button>
+    </div>
+    <div class="admin">
+      <button onclick="alert('Upload Old Test')">Upload</button>
+      <button onclick="alert('Edit Old Test')">Edit</button>
+      <button onclick="alert('Delete Old Test')">Delete</button>
+    </div>
+  </div>  <footer>
+    Live Test Saarthi developed by Lalbabu
+  </footer>  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyBJPIBnG4h_qtrp-uKoGj00c6y8XQiDyGA",
+      authDomain: "live-test-saarthi.firebaseapp.com",
+      projectId: "live-test-saarthi",
+      storageBucket: "live-test-saarthi.appspot.com",
+      messagingSenderId: "997195370086",
+      appId: "1:997195370086:web:xxxxx"
+    };
+    firebase.initializeApp(firebaseConfig);
 
-  </div>
-</body>
+    function loginWithGoogle() {
+      const provider = new firebase.auth.GoogleAuthProvider();
+      firebase.auth().signInWithPopup(provider)
+        .then((result) => {
+          const email = result.user.email;
+          if (email === 'shyamjeer44@gmail.com') {
+            document.querySelectorAll('.admin').forEach(el => el.style.display = 'block');
+            document.getElementById('loginBox').style.display = 'none';
+            alert('Admin Login Success!');
+          } else {
+            alert('Access Denied! You are not Admin.');
+          }
+        })
+        .catch((error) => {
+          console.error(error.message);
+          alert('Login Failed');
+        });
+    }
+
+    function toggleForm(type) {
+      if (type === 'live') {
+        document.getElementById("liveForm").classList.toggle("hidden");
+      } else {
+        document.getElementById("oldForm").classList.toggle("hidden");
+      }
+    }
+
+    function submitComment() {
+      const comment = document.getElementById("studentComment").value;
+      const commentsList = document.getElementById("commentsList");
+      const div = document.createElement("div");
+      div.className = "comment";
+      div.innerText = comment + " 🌟";
+      commentsList.appendChild(div);
+      document.getElementById("studentComment").value = "";
+    }
+
+    function startTest(isRepeat = false) {
+      const name = isRepeat ? document.getElementById("oldName").value.trim() : document.getElementById("name").value.trim();
+      const district = isRepeat ? document.getElementById("oldDistrict").value.trim() : document.getElementById("district").value.trim();
+      if (!name || !district) {
+        alert("Please enter Name and District!");
+        return;
+      }
+      alert(`${isRepeat ? 'Purana Test' : 'Live Test'} Started for ${name} (${district})\nResult: 8/10 | Rank: 15/100`);
+    }
+  </script></body>
 </html>

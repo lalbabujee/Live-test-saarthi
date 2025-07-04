@@ -1,20 +1,31 @@
 <script>
+  const firebaseConfig = {
+    apiKey: "AIzaSyBJPIBnG4h_qtrp-uKoGj00c6y8XQiDyGA",
+    authDomain: "live-test-saarthi.firebaseapp.com",
+    projectId: "live-test-saarthi",
+    storageBucket: "live-test-saarthi.appspot.com",
+    messagingSenderId: "997195370086",
+    appId: "1:997195370086:web:xxxxx"
+  };
+  firebase.initializeApp(firebaseConfig);
+
   function loginWithGoogle() {
     const provider = new firebase.auth.GoogleAuthProvider();
     firebase.auth().signInWithPopup(provider)
       .then((result) => {
-        const email = result.user.email;
+        const email = result.user.email.trim().toLowerCase();
         if (email === 'shyamjeer44@gmail.com') {
           document.querySelectorAll('.admin').forEach(el => el.style.display = 'block');
           document.getElementById('loginBox').style.display = 'none';
-          alert('Admin Login Success!');
+          alert('✅ Admin Login Success');
         } else {
-          alert('Access Denied! You are not Admin.');
+          alert('❌ Access Denied: You are not Admin.');
+          firebase.auth().signOut();
         }
       })
       .catch((error) => {
-        console.error(error);
-        alert('Login Failed: ' + error.message);
+        console.error(error.message);
+        alert('⚠️ Login Failed: ' + error.message);
       });
   }
 </script>

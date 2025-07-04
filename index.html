@@ -1,3 +1,23 @@
+<script>
+  function loginWithGoogle() {
+    const provider = new firebase.auth.GoogleAuthProvider();
+    firebase.auth().signInWithPopup(provider)
+      .then((result) => {
+        const email = result.user.email;
+        if (email === 'shyamjeer44@gmail.com') {
+          document.querySelectorAll('.admin').forEach(el => el.style.display = 'block');
+          document.getElementById('loginBox').style.display = 'none';
+          alert('Admin Login Success!');
+        } else {
+          alert('Access Denied! You are not Admin.');
+        }
+      })
+      .catch((error) => {
+        console.error(error);
+        alert('Login Failed: ' + error.message);
+      });
+  }
+</script>
 <!DOCTYPE html><html lang="hi">
 <head>
   <meta charset="UTF-8" />
